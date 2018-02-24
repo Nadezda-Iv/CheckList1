@@ -14,32 +14,22 @@ class ChooseListTVC: UITableViewController {
     var toDoItems: [NewCategory] = []
 
     var indexPath: IndexPath!
+    var choiseList = [Bool](repeatElement(false, count: 15))
     
     //@IBAction func saveAction(_ sender: UIBarButtonItem) {
     
     @IBAction func saveButton(_ sender: Any) {
         
-        
-        if UIButton.self === #imageLiteral(resourceName: "Checkbox") {
         let ac = UIAlertController(title: "Save checklist as...", message: "save new shecklist?", preferredStyle: .alert)
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
             
             let textField = ac.textFields?[0]
-            self.saveListAs(name: (textField?.text)!)
+            self.saveListAs(name: (textField?.text)!, subname: "")
            
-        func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-            
-                let indexPath = self.tableView.indexPathForSelectedRow
-                
-                guard let selectedRow = indexPath?.row else { return }
-                
-            let selectedCity = self.chooseList[selectedRow]
-            self.saveListAs(name: selectedCity.name)
-            let destinationVC = segue.destination as? SaveListTVC
-            destinationVC?.readyList = selectedCity.list
-            print("save new list")
-            }
+            //self.performSegue(withIdentifier: "closeWithSegue", sender: self)
             self.tableView.reloadData()
+            
+            
         }
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
         ac.addTextField {
@@ -48,7 +38,9 @@ class ChooseListTVC: UITableViewController {
         ac.addAction(ok)
         ac.addAction(cancel)
         present(ac, animated: true, completion: nil)
-     }
+        
+        
+     
     }
     
     var chooseList = [ChooseList]()
@@ -68,7 +60,7 @@ class ChooseListTVC: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
 
-    func saveListAs (name: String){
+    func saveListAs (name: String, subname: String){
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -76,7 +68,7 @@ class ChooseListTVC: UITableViewController {
         let entity = NSEntityDescription.entity(forEntityName: "NewCategory", in: context)
         let taskObject = NSManagedObject(entity: entity!, insertInto: context) as! NewCategory
         taskObject.name = name
-        //taskObject.subname = name
+        taskObject.subname = subname
         
         
         do {
@@ -86,6 +78,7 @@ class ChooseListTVC: UITableViewController {
         } catch {
             print(error.localizedDescription)
         }
+        
     }
     
     
@@ -94,11 +87,25 @@ class ChooseListTVC: UITableViewController {
         UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
             sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
         }) { (success) in
+            print("90")
             sender.isSelected = !sender.isSelected
             UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
                 sender.transform = .identity
             }, completion: nil)
+            
+            //let indexPath = self.tableView.indexPathForSelectedRow
+            print("91")
+            //guard let selectedRow = self.indexPath?.row else { return }
+            
+            //let sel = selectedCity.cellText.text
+            
+            //let selectedCity = self.chooseList[self.indexPath.row].list
+            print("92")
+            
+            //self.saveListAs(name: sel!)
+            
         }
+  
     }
     
     
