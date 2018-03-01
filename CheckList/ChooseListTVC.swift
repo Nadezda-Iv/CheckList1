@@ -11,43 +11,80 @@ import CoreData
 
 class ChooseListTVC: UITableViewController {
 
-    var toDoItems: [NewCategory] = []
+   var toDoItems: [NewCategory] = []
 
     var indexPath: IndexPath!
-    var choiseList = [Bool](repeatElement(false, count: 15))
-    
-    //@IBAction func saveAction(_ sender: UIBarButtonItem) {
+
+    var choiseList = [Bool](repeatElement(false, count: 5))
     
     @IBAction func saveButton(_ sender: Any) {
-        
+        var array = [ReadyList]()
         let ac = UIAlertController(title: "Save checklist as...", message: "save new shecklist?", preferredStyle: .alert)
+     
+        ac.addTextField { action in
+        }
+        ac.addTextField { action in }
+        
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
+        let textField = ac.textFields?[0]
+        let numberText = ac.textFields?[1]
             
-            let textField = ac.textFields?[0]
-            self.saveListAs(name: (textField?.text)!, subname: "")
-           
-            //self.performSegue(withIdentifier: "closeWithSegue", sender: self)
-            self.tableView.reloadData()
-            
+        if numberText!.text! == "" || Int(numberText!.text!)! > 3 || Int(numberText!.text!)! < 1 {
+            let alertController = UIAlertController(title: "Ошибка!", message: "Введен некорректный номер чеклиста", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+            } else {
+            print("ayyyyyy")
+        
+            if Int(numberText!.text!)! == 1 {
+                array = [self.listCategory1, self.listCategory2, self.listCategory3, self.listCategory10, self.listCategory11, self.listCategory12, self.listCategory13, self.listCategory14, self.listCategory15, self.listCategory16]
+                print("1")
+            } else {
+                if Int(numberText!.text!)! == 2 {
+                    array = [self.listCategory4, self.listCategory5, self.listCategory6]
+                    print("2")
+
+                } else {
+                    array = [self.listCategory7, self.listCategory8, self.listCategory9]
+                    print("3")
+                }
+            }
+            print(array)
+
+        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+                
+                // create entity of our member class in the context
+        let list = NewCategory(context: context)
+                
+                // set all the properties
+        list.name = textField?.text
+        list.subname = array as NSObject
+         print("4")
+                // trying save context
+            do {
+                try context.save()
+                print("Сохранение удалось!")
+            } catch let error as NSError {
+                print("Не удалось сохранить данные \(error), \(error.userInfo)")
+                }
+            }
             
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        ac.addTextField {
-            textField in
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        
         ac.addAction(ok)
         ac.addAction(cancel)
         present(ac, animated: true, completion: nil)
-        
-        
-     
     }
-    
+
+
     var chooseList = [ChooseList]()
     
     var previousIndexPath: IndexPath?
     var currentIndexPath: IndexPath!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -57,91 +94,45 @@ class ChooseListTVC: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
-    func saveListAs (name: String, subname: String){
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "NewCategory", in: context)
-        let taskObject = NSManagedObject(entity: entity!, insertInto: context) as! NewCategory
-        taskObject.name = name
-        taskObject.subname = subname
-        
-        
-        do {
-            try context.save()
-            toDoItems.append(taskObject)
-            print("Saved! Good Job!")
-        } catch {
-            print(error.localizedDescription)
-        }
-        
-    }
+
+    // List travel 1
+    let listCategory1 = ReadyList(name: "Распечатайте ваш маршрут и билеты, копии паспортов")
+    let listCategory2 = ReadyList(name: "Решите, как будете добираться до аэропорта, вокзала")
+    let listCategory3 = ReadyList(name: "Определите время, когда будет нужно выехать в аэропорт или на вокзал")
+    let listCategory10 = ReadyList(name: "Деньги и документы. Банковские карты")
+    let listCategory11 = ReadyList(name: "Список важных телефонов и адресов")
+    let listCategory12 = ReadyList(name: "Футболки- шт. Рубашки- шт.(по 1 на 2 дня)")
+    let listCategory13 = ReadyList(name: "Нижнее бельё- шт. Носки- пар(ы) (по 1 на каждый день)")
+    let listCategory14 = ReadyList(name: "Брюки/Шорты")
+    let listCategory15 = ReadyList(name: "Дополнительная обувь")
+    let listCategory16 = ReadyList(name: "Медикаменты")
     
+    // List travel 2
+    let listCategory4 = ReadyList(name: "Площадь пола")
+    let listCategory5 = ReadyList(name: "Площадь стен")
+    let listCategory6 = ReadyList(name: "Площадь дверных проемов")
     
-    @IBAction func checkBoxTapped(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }) { (success) in
-            print("90")
-            sender.isSelected = !sender.isSelected
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.transform = .identity
-            }, completion: nil)
-            
-            //let indexPath = self.tableView.indexPathForSelectedRow
-            print("91")
-            //guard let selectedRow = self.indexPath?.row else { return }
-            
-            //let sel = selectedCity.cellText.text
-            
-            //let selectedCity = self.chooseList[self.indexPath.row].list
-            print("92")
-            
-            //self.saveListAs(name: sel!)
-            
-        }
+    // List travel 3
+    let listCategory7 = ReadyList(name: "Стоимость работ")
+    let listCategory8 = ReadyList(name: "Стоимость материалов")
+    let listCategory9 = ReadyList(name: "Время ремонта")
+    
   
-    }
-    
-    
+
     func loadData() -> [ChooseList] {
-        //typeWorks
         
-        let listCategory1 = ReadyList(name: "Распечатайте ваш маршрут и билеты, копии паспортов")
-        let listCategory2 = ReadyList(name: "Решите, как будете добираться до аэропорта, вокзала")
-        let listCategory3 = ReadyList(name: "Определите время, когда будет нужно выехать в аэропорт или на вокзал")
-        let listCategory10 = ReadyList(name: "Деньги и документы. Банковские карты")
-        let listCategory11 = ReadyList(name: "Список важных телефонов и адресов")
-        let listCategory12 = ReadyList(name: "Футболки- шт. Рубашки- шт.(по 1 на 2 дня)")
-        let listCategory13 = ReadyList(name: "Нижнее бельё- шт. Носки- пар(ы) (по 1 на каждый день)")
-        let listCategory14 = ReadyList(name: "Брюки/Шорты")
-        let listCategory15 = ReadyList(name: "Дополнительная обувь")
-        let listCategory16 = ReadyList(name: "Медикаменты")
+        let oneTravel = [listCategory1, listCategory2, listCategory3, listCategory10, listCategory11, listCategory12, listCategory13, listCategory14, listCategory15, listCategory16]
+        let twoTravel = [listCategory4, listCategory5, listCategory6]
         
-        //measure
+        let threeTravel = [listCategory7, listCategory8, listCategory9]
         
-        let listCategory4 = ReadyList(name: "Площадь пола")
-        let listCategory5 = ReadyList(name: "Площадь стен")
-        let listCategory6 = ReadyList(name: "Площадь дверных проемов")
-        
-        //San Diego
-        
-        let listCategory7 = ReadyList(name: "Стоимость работ")
-        let listCategory8 = ReadyList(name: "Стоимость материалов")
-        let listCategory9 = ReadyList(name: "Время ремонта")
-        
-        //cost
-        let travel1 = ChooseList(name:"The journey up to 7 days", list: [listCategory1, listCategory2, listCategory3, listCategory10, listCategory11, listCategory12, listCategory13, listCategory14, listCategory15, listCategory16])
-        let travel2 = ChooseList(name:"Journey to the sea", list: [listCategory4, listCategory5, listCategory6])
-        let travel3 = ChooseList(name: "Winter journey", list: [listCategory7, listCategory8, listCategory9])
+        let travel1 = ChooseList(name:"1. The journey up to 7 days", list: oneTravel)
+        let travel2 = ChooseList(name:"2. Journey to the sea", list: twoTravel)
+        let travel3 = ChooseList(name: "3. Winter journey", list: threeTravel)
         
         return [travel1, travel2, travel3]
-        
     }
     
     
@@ -165,22 +156,29 @@ class ChooseListTVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChooseTableViewCell
         let list = chooseList[indexPath.row]
         cell.chooseLabel.text = list.name
-
+        
         return cell
     }
- 
-    /*override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        self.previousIndexPath = indexPath
-       
-        
-        tableView.beginUpdates()
-        tableView.reloadSections([indexPath.section], with: .automatic)
-        
-        tableView.endUpdates()
 
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+        } else {
+            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+        }
 
-    } */
+    }
+  
+
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete
+        {
+            choiseList.remove(at: indexPath.row)
+            tableView.reloadData()
+        }
+    }
     
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -189,14 +187,13 @@ class ChooseListTVC: UITableViewController {
         
         guard let selectedRow = indexPath?.row else { return }
         
-        let selectedCity = chooseList[selectedRow]
+        let selectedList = chooseList[selectedRow]
         
         let destinationVC = segue.destination as? ReadyListTVC
         
-        destinationVC?.readyList = selectedCity.list
+        destinationVC?.readyList = selectedList.list
         
     }
-    
 
     
     /*
@@ -234,14 +231,6 @@ class ChooseListTVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

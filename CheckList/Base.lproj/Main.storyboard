@@ -221,24 +221,13 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6lG-S1-rrA">
-                                            <rect key="frame" x="321" y="-1" width="38" height="60"/>
-                                            <state key="normal" title="Button" image="UnCheckbox"/>
-                                            <state key="selected" image="Checkbox"/>
-                                            <connections>
-                                                <action selector="checkBoxTapped:" destination="3a9-Tn-hyb" eventType="touchUpInside" id="VLa-Gw-leQ"/>
-                                            </connections>
-                                        </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="oR7-Sc-vAh" secondAttribute="trailing" constant="80" id="COH-LK-B7D"/>
                                     <constraint firstItem="oR7-Sc-vAh" firstAttribute="top" secondItem="Zok-bZ-NcU" secondAttribute="top" id="JUx-ID-a5d"/>
                                     <constraint firstAttribute="bottom" secondItem="oR7-Sc-vAh" secondAttribute="bottom" constant="11" id="ihq-lq-yZJ"/>
-                                    <constraint firstItem="6lG-S1-rrA" firstAttribute="centerY" secondItem="Zok-bZ-NcU" secondAttribute="centerY" constant="-6" id="lAE-Jo-bvd"/>
-                                    <constraint firstItem="6lG-S1-rrA" firstAttribute="leading" secondItem="Zok-bZ-NcU" secondAttribute="leading" constant="321" id="qxS-EO-ajB"/>
                                     <constraint firstItem="oR7-Sc-vAh" firstAttribute="leading" secondItem="Zok-bZ-NcU" secondAttribute="leading" constant="16" id="uoA-uM-Gne"/>
-                                    <constraint firstAttribute="trailing" secondItem="6lG-S1-rrA" secondAttribute="trailing" constant="16" id="vkW-FT-GVE"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="chooseLabel" destination="oR7-Sc-vAh" id="5EL-hf-8Y9"/>
@@ -259,7 +248,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="7Y2-4C-NSB">
                             <connections>
-                                <action selector="saveButton:" destination="3a9-Tn-hyb" id="McR-6S-qtA"/>
+                                <action selector="saveButton:" destination="3a9-Tn-hyb" id="Q5h-yO-mCo"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -674,22 +663,22 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ITh-KY-ewd">
-                                            <rect key="frame" x="16" y="17" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="16" y="12" width="43" height="27.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="zen-c4-hkU">
-                                            <rect key="frame" x="16" y="40.5" width="44" height="14.5"/>
+                                            <rect key="frame" x="16" y="40.5" width="62" height="21.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.28465025906735753" green="0.28465025906735753" blue="0.28465025906735753" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.39279067093383302" green="0.67485022668393779" blue="0.22074431921083348" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -826,8 +815,6 @@
     </scenes>
     <resources>
         <image name="CheckMark" width="50" height="50"/>
-        <image name="Checkbox" width="60" height="60"/>
         <image name="Rectangle" width="50" height="50"/>
-        <image name="UnCheckbox" width="60" height="60"/>
     </resources>
 </document>

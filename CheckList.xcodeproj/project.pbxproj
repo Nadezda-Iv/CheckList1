@@ -18,6 +18,7 @@
 		522EB4EE2018CDB700BF74AB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 522EB4ED2018CDB700BF74AB /* Assets.xcassets */; };
 		522EB4F12018CDB700BF74AB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 522EB4EF2018CDB700BF74AB /* LaunchScreen.storyboard */; };
 		522EB4F92018CE1500BF74AB /* FirstListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522EB4F82018CE1500BF74AB /* FirstListViewController.swift */; };
+		5238B63E2047EE34001F16C3 /* SaveArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5238B63D2047EE34001F16C3 /* SaveArray.swift */; };
 		523F74392029968F00742008 /* ChooseList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F74382029968F00742008 /* ChooseList.swift */; };
 		523F743B202996B900742008 /* ReadyList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F743A202996B900742008 /* ReadyList.swift */; };
 		523F743E2029982B00742008 /* ReadyListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F743D2029982B00742008 /* ReadyListTVC.swift */; };
@@ -29,6 +30,7 @@
 		5262825A20283C1900D1CB4E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262825920283C1900D1CB4E /* Section.swift */; };
 		5262825C20287A8800D1CB4E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262825B20287A8800D1CB4E /* CoreData.swift */; };
 		526912F12019F7D500A64709 /* SaveChekListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526912F02019F7D500A64709 /* SaveChekListTVC.swift */; };
+		52AB1B5D204184C40015ED05 /* ChoiseWithUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */; };
 		52BCAB9F20230D37003AEE59 /* ChooseListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCAB9E20230D37003AEE59 /* ChooseListTVC.swift */; };
 		52BCABA120232823003AEE59 /* MemberTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCABA020232823003AEE59 /* MemberTVC.swift */; };
 		52BCABA320232AFE003AEE59 /* AddRemaindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCABA220232AFE003AEE59 /* AddRemaindViewController.swift */; };
@@ -50,6 +52,7 @@
 		522EB4F02018CDB700BF74AB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		522EB4F22018CDB700BF74AB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		522EB4F82018CE1500BF74AB /* FirstListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstListViewController.swift; sourceTree = "<group>"; };
+		5238B63D2047EE34001F16C3 /* SaveArray.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveArray.swift; sourceTree = "<group>"; };
 		523F74382029968F00742008 /* ChooseList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseList.swift; sourceTree = "<group>"; };
 		523F743A202996B900742008 /* ReadyList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyList.swift; sourceTree = "<group>"; };
 		523F743D2029982B00742008 /* ReadyListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyListTVC.swift; sourceTree = "<group>"; };
@@ -61,6 +64,7 @@
 		5262825920283C1900D1CB4E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		5262825B20287A8800D1CB4E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		526912F02019F7D500A64709 /* SaveChekListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChekListTVC.swift; sourceTree = "<group>"; };
+		52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiseWithUserDefaults.swift; sourceTree = "<group>"; };
 		52BCAB9E20230D37003AEE59 /* ChooseListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseListTVC.swift; sourceTree = "<group>"; };
 		52BCABA020232823003AEE59 /* MemberTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTVC.swift; sourceTree = "<group>"; };
 		52BCABA220232AFE003AEE59 /* AddRemaindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRemaindViewController.swift; sourceTree = "<group>"; };
@@ -124,6 +128,8 @@
 				52BCAB9E20230D37003AEE59 /* ChooseListTVC.swift */,
 				523F743A202996B900742008 /* ReadyList.swift */,
 				523F74382029968F00742008 /* ChooseList.swift */,
+				52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */,
+				5238B63D2047EE34001F16C3 /* SaveArray.swift */,
 			);
 			name = Choose;
 			sourceTree = "<group>";
@@ -256,6 +262,7 @@
 				522EB4EC2018CDB700BF74AB /* CheckList.xcdatamodeld in Sources */,
 				5262825A20283C1900D1CB4E /* Section.swift in Sources */,
 				523F743E2029982B00742008 /* ReadyListTVC.swift in Sources */,
+				5238B63E2047EE34001F16C3 /* SaveArray.swift in Sources */,
 				523F74472029C6C900742008 /* ChooseTableViewCell.swift in Sources */,
 				522852C62036EAC900C33AE8 /* Subtitle.swift in Sources */,
 				526282582028385300D1CB4E /* ExpandableHeaderView.swift in Sources */,
@@ -264,6 +271,7 @@
 				523F743B202996B900742008 /* ReadyList.swift in Sources */,
 				522EB4E42018CDB700BF74AB /* AppDelegate.swift in Sources */,
 				52C523502033315E00CE196E /* WeatherTableViewController.swift in Sources */,
+				52AB1B5D204184C40015ED05 /* ChoiseWithUserDefaults.swift in Sources */,
 				52BCABA120232823003AEE59 /* MemberTVC.swift in Sources */,
 				526912F12019F7D500A64709 /* SaveChekListTVC.swift in Sources */,
 			);

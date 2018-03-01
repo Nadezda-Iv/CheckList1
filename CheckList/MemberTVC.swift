@@ -20,29 +20,6 @@ class MemberTVC: UITableViewController, NSFetchedResultsControllerDelegate {
     }
     
     var indexPath: IndexPath!
-    
-   /* @IBAction func scheduleNotification() {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "memberCell", for: indexPath)
-        let memb = toDoItems[indexPath.row]
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Reminder"
-        content.body = memb.memberText!
-        content.badge = 1
-        content.sound = UNNotificationSound.default()
-
-        
-        let triggerDate = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute], from: memb.dateMember!)
-        let trig = UNCalendarNotificationTrigger(dateMatching: triggerDate, repeats: false)
-        let request = UNNotificationRequest(identifier: "calendar", content: content, trigger: trig)
-        
-        UNUserNotificationCenter.current().add(request) { (error) in
-            //handle error
-        }
-        
-        print("succes")
-
-    } */
 
     var fetchResultsController: NSFetchedResultsController<Member>!
     
@@ -192,27 +169,7 @@ class MemberTVC: UITableViewController, NSFetchedResultsControllerDelegate {
         
         return action
     }
-    
-    /* override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-
-        let delete = UITableViewRowAction(style: .default, title: "\u{1F5D1}") { (action, indexPath) in
-            self.toDoItems.remove(at: indexPath.row)
-            if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-                
-                let objectToDelete = self.fetchResultsController.object(at: indexPath)
-                context.delete(objectToDelete)
-                
-                do {
-                    try context.save()
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-        }
-        delete.backgroundColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
-        return [delete]
-    } */
-    
+ 
     
 }
 

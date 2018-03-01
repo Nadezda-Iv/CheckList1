@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 
-class SaveListTVC: UITableViewController {
-
+ /*class SaveListTVC: UITableViewController {
+    var array = [String]()
     var readyList = [ReadyList]()
     var fetchResultsController: NSFetchedResultsController<NewCategory>!
     var toDoItems: [NewCategory] = []
@@ -41,30 +41,38 @@ class SaveListTVC: UITableViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return readyList.count
+        return toDoItems.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "saveListCell", for: indexPath) as! SubtitleTVCell
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "saveListCell", for: indexPath) as! SubtitleTVCell
 
-        // Configure the cell...
-        let readyCell = readyList[indexPath.row]
-        for _ in readyList {
-            cell.subtitleText.text = "\(readyCell.name.description)"
-        }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "saveListCell", for: indexPath)
+        let task = toDoItems[indexPath.row]
+        
+        if Int(task.subname!) == 1 {
+            array = ["Распечатайте ваш маршрут и билеты, копии паспортов", "Решите, как будете добираться до аэропорта, вокзала", "Определите время, когда будет нужно выехать в аэропорт или на вокзал","Деньги и документы. Банковские карты","Список важных телефонов и адресов",
+                "Футболки- шт. Рубашки- шт.(по 1 на 2 дня","Нижнее бельё- шт. Носки- пар(ы) (по 1 на каждый день","Брюки/Шорты","Дополнительная обувь","Медикаменты"]
+            for i in array {
+                cell.textLabel?.text = i
+                print("hhhhhhh")
+            }
+            
+        } //else {
+           // cell.textLabel?.text = task.subname
+      //  }
+        
+        
         return cell
     }
  
@@ -114,4 +122,4 @@ class SaveListTVC: UITableViewController {
     }
     */
 
-}
+}   */
