@@ -22,7 +22,7 @@ class WeatherTableViewController: UITableViewController, UISearchBarDelegate {
         
         searchBar.delegate = self
         
-        updateWeatherForLocation(location: "New York")
+        updateWeatherForLocation(location: "Sochi")
     }
     
     

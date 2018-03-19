@@ -7,76 +7,76 @@
 //
 
 import UIKit
-import CoreData
+//import CoreData
 
 class ChooseListTVC: UITableViewController {
 
-   var toDoItems: [NewCategory] = []
+  // var toDoItems: [NewCategory] = []
 
-    var indexPath: IndexPath!
+    //var indexPath: IndexPath!
 
     var choiseList = [Bool](repeatElement(false, count: 5))
     
+    var textField: UITextField!
+    var addText = [String]()
+    
     @IBAction func saveButton(_ sender: Any) {
-        var array = [ReadyList]()
         let ac = UIAlertController(title: "Save checklist as...", message: "save new shecklist?", preferredStyle: .alert)
-     
-        ac.addTextField { action in
-        }
         ac.addTextField { action in }
-        
+        ac.addTextField { action in }
         let ok = UIAlertAction(title: "Ok", style: .default) { action in
-        let textField = ac.textFields?[0]
-        let numberText = ac.textFields?[1]
-            
-        if numberText!.text! == "" || Int(numberText!.text!)! > 3 || Int(numberText!.text!)! < 1 {
-            let alertController = UIAlertController(title: "Ошибка!", message: "Введен некорректный номер чеклиста", preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            alertController.addAction(okAction)
-            self.present(alertController, animated: true, completion: nil)
-            } else {
-            print("ayyyyyy")
         
-            if Int(numberText!.text!)! == 1 {
-                array = [self.listCategory1, self.listCategory2, self.listCategory3, self.listCategory10, self.listCategory11, self.listCategory12, self.listCategory13, self.listCategory14, self.listCategory15, self.listCategory16]
-                print("1")
+        self.textField = ac.textFields?[0]
+        let numberText = ac.textFields?[1]
+        var arrayList = [String]()
+            print("maybe")
+  
+            if numberText!.text! == "" || Int(numberText!.text!)! > 3 || Int(numberText!.text!)! < 1 {
+                    let alertController = UIAlertController(title: "Ошибка!", message: "Введен некорректный номер чеклиста", preferredStyle: .alert)
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    alertController.addAction(okAction)
+                    self.present(alertController, animated: true, completion: nil)
             } else {
-                if Int(numberText!.text!)! == 2 {
-                    array = [self.listCategory4, self.listCategory5, self.listCategory6]
-                    print("2")
-
-                } else {
-                    array = [self.listCategory7, self.listCategory8, self.listCategory9]
-                    print("3")
+                switch Int(numberText!.text!)! {
+                case 1:  arrayList = ["Распечатайте ваш маршрут и билеты, копии паспортов", "Решите, как будете добираться до аэропорта, вокзала", "Определите время, когда будет нужно выехать в аэропорт или на вокзал", "Деньги и документы. Банковские карты", "Список важных телефонов и адресов", "Футболки- шт. Рубашки- шт.(по 1 на 2 дня)", "Нижнее бельё- шт. Носки- пар(ы) (по 1 на каждый день)", "Брюки/Шорты", "Дополнительная обувь", "Медикаменты"]
+                print("0")
+                    
+                case 2:  arrayList = ["Площадь пола", "Площадь стен", "Площадь дверных проемов"]
+                print("2")
+                    
+                case 3:  arrayList = ["Стоимость работ", "Стоимость материалов", "Время ремонта"]
+                print("3")
+                default: break
                 }
-            }
-            print(array)
+                if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+                    // create entity of our member class in the context
+                    let arrayName = ArrayName(context: context)
+                    let array = ArrayList(context:context)
+                    
+                    // set all the properties
+                    arrayName.name = self.textField.text
+                    array.array = arrayList as NSObject
+                    array.name = self.textField.text
 
-        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-                
-                // create entity of our member class in the context
-        let list = NewCategory(context: context)
-                
-                // set all the properties
-        list.name = textField?.text
-        list.subname = array as NSObject
-         print("4")
-                // trying save context
-            do {
-                try context.save()
-                print("Сохранение удалось!")
-            } catch let error as NSError {
-                print("Не удалось сохранить данные \(error), \(error.userInfo)")
+                    do {
+                        try context.save()
+                        print("Сохранение удалось!")
+                    } catch let error as NSError {
+                        print("Не удалось сохранить данные \(error), \(error.userInfo)")
+                    }
                 }
-            }
-            
-        }
-        }
+       }
+    }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         
         ac.addAction(ok)
         ac.addAction(cancel)
-        present(ac, animated: true, completion: nil)
+       present(ac, animated: true, completion: nil)
+   }
+    
+    func save(name: String) -> [String] {
+        self.addText.append(name)
+        return self.addText
     }
 
 
@@ -195,41 +195,7 @@ class ChooseListTVC: UITableViewController {
         
     }
 
-    
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
 
 

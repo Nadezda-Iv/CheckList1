@@ -5,7 +5,7 @@
 //  Created by MacBook Pro on 05.02.2018.
 //  Copyright © 2018 dev.ios. All rights reserved.
 //
-
+/*
 import UIKit
 
 protocol ExpandableHeaderViewDelegate {
@@ -55,10 +55,10 @@ class ExpandableHeaderView: UITableViewHeaderFooterView {
         self.titleLabel?.textColor = UIColor.white
         self.subtitleLabel?.textColor = UIColor.white
         self.subtitleLabel?.alpha = 0.7
-        self.contentView.backgroundColor = UIColor.darkGray
+        self.contentView.backgroundColor = UIColor.brown
         
 }
-}
+}  */
 
 
 

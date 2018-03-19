@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5223A7FE205AAE5F009C93ED /* NewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5223A7FD205AAE5F009C93ED /* NewTableViewCell.swift */; };
 		522852C22036E9DC00C33AE8 /* SaveListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522852C12036E9DC00C33AE8 /* SaveListTVC.swift */; };
 		522852C42036EAAD00C33AE8 /* Header.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522852C32036EAAD00C33AE8 /* Header.swift */; };
 		522852C62036EAC900C33AE8 /* Subtitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 522852C52036EAC900C33AE8 /* Subtitle.swift */; };
@@ -39,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5223A7FD205AAE5F009C93ED /* NewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTableViewCell.swift; sourceTree = "<group>"; };
 		522852C12036E9DC00C33AE8 /* SaveListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveListTVC.swift; sourceTree = "<group>"; };
 		522852C32036EAAD00C33AE8 /* Header.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Header.swift; sourceTree = "<group>"; };
 		522852C52036EAC900C33AE8 /* Subtitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Subtitle.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				526282572028385300D1CB4E /* ExpandableHeaderView.swift */,
 				5262825920283C1900D1CB4E /* Section.swift */,
 				52628253202833B500D1CB4E /* NewListViewController.swift */,
+				5223A7FD205AAE5F009C93ED /* NewTableViewCell.swift */,
 			);
 			name = NewCheckList;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				523F74392029968F00742008 /* ChooseList.swift in Sources */,
 				523F74452029B8FB00742008 /* ReadyTextTableViewCell.swift in Sources */,
 				523F743B202996B900742008 /* ReadyList.swift in Sources */,
+				5223A7FE205AAE5F009C93ED /* NewTableViewCell.swift in Sources */,
 				522EB4E42018CDB700BF74AB /* AppDelegate.swift in Sources */,
 				52C523502033315E00CE196E /* WeatherTableViewController.swift in Sources */,
 				52AB1B5D204184C40015ED05 /* ChoiseWithUserDefaults.swift in Sources */,

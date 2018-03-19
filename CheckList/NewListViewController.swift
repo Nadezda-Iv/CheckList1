@@ -9,196 +9,24 @@
 import UIKit
 import CoreData
 
-class NewListViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource, ExpandableHeaderViewDelegate {
+class NewListViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource { //}, ExpandableHeaderViewDelegate {
     
-    var toDoItems: [NewCategory] = []
+    let sectionsHeaders = ["Most important", "Gadget", "Beautician on board", "Cosmetic bag in the suitcare", "Medicine chest", "Clothes"]
+    let sectionsContent = [["passport", "tickets","reservation", "insurance", "money", "phone", "charger", "headphone", "powerbank", "driver's license"], ["camera", "flash card", "battery additional", "e-book", "adapter to the outlet", "laptop"], ["wet napkin", "disposable wipes", "moisture cream", "eye drops", "hand sanitizer", "lip balm"], ["shampoo", "hair conditioner", "comb", "razor", "shaving gel", "facial toner", "deodorant", "manicure set", "tweezers", "cotton swab", "cotton pad", "perfume", "hygience products", "lenses", "elastic hair band", "hairdryer", "towel", "sun cream"], ["anesthetic", "antipyretic", "for cold", "from allergies", "antibiotic", "from injury", "motion sickness", "as poisoning", "from diarrhoea", "patch", "antiseptic"], ["socks and underwear", "jerseys", "shirts", "dresses/skirts", "jeans/pants", "sweater", "windbreaker", "jewelry and accessories", "sleepwear", "belt"]]
     
-    @IBAction func chekMark(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-            sender.transform =  .identity //CGAffineTransform(scaleX: 0.1, y: 0.1)
-        }) { (success) in
-            sender.isSelected = !sender.isSelected
-            UIView.animate(withDuration: 0.5, delay: 0.1, options: .curveLinear, animations: {
-                sender.transform = .identity
-            }, completion: nil)
-        }
-        //let cell = self.tableView.dequeueReusableCell(withIdentifier: "labelCell")
-       // self.saveTask(name: (cell?.textLabel?.text)!)
-    }
+    var toDoItems: [ArrayName] = []
     
-    /*
-    var isVisited = false
+    var arrayCell = [String]()
     
-    @IBAction func toggleIsVisitedPressed(_ sender: UIButton) {
-      isVisited =  (sender.isSelected == !sender.isSelected) ?  false :  true
-    } */
+    var checkersOpFalse = [IndexPath: Bool]()
+ 
     
     @IBOutlet weak var tableView: UITableView!
     
-    @IBAction func saveButton(_ sender: UIBarButtonItem) {
-        let ac = UIAlertController(title: "Save checklist", message: "save new shecklist?", preferredStyle: .alert)
-        let ok = UIAlertAction(title: "Ok", style: .default) { action in
-            
-            let textField = ac.textFields?[0]
-            self.saveTask(name: (textField?.text)!)
-            
-            
-            //let cell = self.tableView.dequeueReusableCell(withIdentifier: "labelCell")
-           // self.saveTask(name: (cell?.textLabel?.text)!)
-           
-
-            self.tableView.reloadData()
-        }
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
-        ac.addTextField {
-            textField in
-        }
-        ac.addAction(ok)
-        ac.addAction(cancel)
-        present(ac, animated: true, completion: nil)
- 
-    }
-    func saveTask(name: String) {
-        
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let entity = NSEntityDescription.entity(forEntityName: "NewCategory", in: context)
-        let taskObject = NSManagedObject(entity: entity!, insertInto: context) as! NewCategory
-        taskObject.name = name
-        
-        do {
-            try context.save()
-            toDoItems.append(taskObject)
-            print("Saved! Good Job!")
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    var sections = [
-        Section(genre: "Most important",
-                movies: ["passport", "tickets","reservation", "insurance", "money", "phone", "charger", "headphone", "powerbank", "driver's license"],
-                expanded: false,
-                subtitle: "Please select a position"),
-        Section(genre: "Gadget",
-                movies: ["camera", "flash card", "battery additional", "e-book", "adapter to the outlet", "laptop"],
-                expanded: false,
-                subtitle: "Please select a position"),
-        Section(genre: "Beautician on board",
-                movies: ["wet napkin", "disposable wipes", "moisture cream", "eye drops", "hand sanitizer", "lip balm"],
-                expanded: false,
-                subtitle: "Please select a position"),
-        Section(genre: "Cosmetic bag in the suitcare",
-                movies: ["shampoo", "hair conditioner", "comb", "razor", "shaving gel", "facial toner", "deodorant", "manicure set", "tweezers", "cotton swab", "cotton pad", "perfume", "hygience products", "lenses", "elastic hair band", "hairdryer", "towel", "sun cream"],
-                expanded: false,
-                subtitle: "Please select a position"),
-        Section(genre: "Medicine chest",
-                movies: ["anesthetic", "antipyretic", "for cold", "from allergies", "antibiotic", "from injury", "motion sickness", "as poisoning", "from diarrhoea", "patch", "antiseptic"],
-                expanded: false,
-                subtitle: "Please select a position"),
-        Section(genre: "Clothes",
-                movies: ["socks and underwear", "jerseys", "shirts", "dresses/skirts", "jeans/pants", "sweater", "windbreaker", "jewelry and accessories", "sleepwear", "belt"],
-                expanded: false,
-                subtitle: "Please select a position"),
-    ]
-   
-   let categoryMark = [Bool](repeatElement(false, count: 70))
-    
-    var selectIndexPatch: IndexPath!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        selectIndexPatch = IndexPath(row: -1, section: -1)
-        //let categoryMark = [Bool](repeatElement(false, count: 70))
-        let nib = UINib(nibName: "ExpandableHeaderView", bundle: nil)
-        tableView.register(nib, forHeaderFooterViewReuseIdentifier: "expandableHeaderView")
-    }
-    
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return sections.count
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return  sections[section].movies.count
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 58
-    }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if sections[indexPath.section].expanded {
-            return 44
-        } else {
-            return 0
-        }
-    }
-    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "expandableHeaderView") as! ExpandableHeaderView
-        headerView.customInit(title: sections[section].genre, subtitle: sections[section].subtitle, section: section, delegate: self)
-        return headerView
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell")
-        cell?.textLabel?.text = sections[indexPath.section].movies[indexPath.row]
         
-       
-        return cell!
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.selectIndexPatch = indexPath
-        sections[indexPath.section].expanded = !sections[indexPath.section].expanded
- 
-        tableView.beginUpdates()
-        tableView.reloadSections([indexPath.section], with: .automatic)
-     
-        tableView.endUpdates()
-        
-        
-       /* let ac = UIAlertController(title: nil, message: "Выберите действие", preferredStyle: .actionSheet)
-        let isVisitedTitle = (self.sections[indexPath.section].subtitle != nil) ? "Добавитьв список?" : "Убрать из списка?"
-        let cell = tableView.cellForRow(at: indexPath)
-        if indexPath == selectIndexPatch {
-            cell?.accessoryType = .checkmark
-        } else {
-            cell?.accessoryType = .none
-        }
-        let isVisit = UIAlertAction(title: isVisitedTitle, style: .default) { (action) in
-            //let cell = tableView.cellForRow(at: indexPath)
-            
-            //self.sections[indexPath.section].subtitle = !(self.sections[indexPath.section].subtitle != nil)
-            //cell?.accessoryType = self.sections[indexPath.section].subtitle ? .checkmark : .none
-            
-            
-        }
-        let cancel = UIAlertAction(title: "Отмена", style: .cancel, handler: nil)
-        // add all actions to first alert controller
-        
-        ac.addAction(isVisit)
-        ac.addAction(cancel)
-        //present first alert controller
-        present(ac, animated: true, completion: nil)
-        
-        tableView.deselectRow(at: indexPath, animated: true) */
-    } 
-    
-    func toogleSection(header: ExpandableHeaderView, section: Int) {
-        sections[section].expanded = !sections[section].expanded
-        tableView.beginUpdates()
-        tableView.reloadSections([section], with: .automatic)
-        tableView.endUpdates()
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
     override func didReceiveMemoryWarning() {
@@ -206,5 +34,85 @@ class NewListViewController: UIViewController,  UITableViewDelegate, UITableView
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Table view data source
     
-} 
+     func numberOfSections(in tableView: UITableView) -> Int {
+       
+        return sectionsHeaders.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sectionsHeaders[section]
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        return 50
+    }
+    
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+       
+        return sectionsContent[section].count
+    }
+   
+    
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as! NewTableViewCell
+        cell.labelCell?.text = sectionsContent[indexPath.section][indexPath.row]
+        cell.accessoryType = checkersOpFalse[indexPath, default: false] ? .checkmark : .none
+
+        return cell
+    }
+    
+     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+        checkersOpFalse[indexPath] = !checkersOpFalse[indexPath, default: false]
+        tableView.reloadRows(at: [ indexPath ], with: .fade)
+        
+        let cell = self.tableView.cellForRow(at: indexPath)
+        if cell?.accessoryType == .checkmark {
+            self.arrayCell.append(self.sectionsContent[(indexPath.section)][(indexPath.row)])
+            print(self.arrayCell)
+        }
+        
+   }
+
+    
+    @IBAction func saveButton(_ sender: UIBarButtonItem) {
+        let ac = UIAlertController(title: "Save checklist", message: "save new shecklist?", preferredStyle: .alert)
+        ac.addTextField { action in }
+        let ok = UIAlertAction(title: "Ok", style: .default) { action in
+       
+        let textField = ac.textFields?[0]
+        
+            if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+                // create entity of our member class in the context
+                let arrayName = ArrayName(context: context)
+                let array = ArrayList(context:context)
+                
+                arrayName.name = textField?.text
+                array.array = self.arrayCell as NSObject
+                array.name = textField?.text
+                print(self.arrayCell)
+                do {
+                    try context.save()
+                    print("Сохранение удалось!")
+                } catch let error as NSError {
+                    print("Не удалось сохранить данные \(error), \(error.userInfo)")
+                }
+            }
+             self.tableView.reloadData()
+            
+     
+            }
+
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
+    
+        ac.addAction(ok)
+        ac.addAction(cancel)
+        present(ac, animated: true, completion: nil)
+ 
+    }
+   
+    
+}

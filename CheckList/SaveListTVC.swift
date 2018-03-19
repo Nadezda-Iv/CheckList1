@@ -9,117 +9,81 @@
 import UIKit
 import CoreData
 
- /*class SaveListTVC: UITableViewController {
-    var array = [String]()
-    var readyList = [ReadyList]()
-    var fetchResultsController: NSFetchedResultsController<NewCategory>!
-    var toDoItems: [NewCategory] = []
+class SaveListTVC: UITableViewController {
+    
+    var readyList = [NSObject]()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // create fetch request with descriptor
-        let fetchRequest: NSFetchRequest<NewCategory> = NewCategory.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "subname", ascending: true)
-        fetchRequest.sortDescriptors = [sortDescriptor]
-        // getting context
-        if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-            // creating fetch result controller
-            fetchResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: context, sectionNameKeyPath: nil, cacheName: nil)
-            fetchResultsController.delegate = self as? NSFetchedResultsControllerDelegate
-            
-            // trying to retrieve data
-            do {
-                try fetchResultsController.performFetch()
-                // save retrieved data into restaurants array
-                toDoItems = fetchResultsController.fetchedObjects!
-            } catch let error as NSError {
-                print(error.localizedDescription)
-            }
-        }
+  
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDoItems.count
+        return readyList.count
     }
-
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 60
+    }
+    
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //let cell = tableView.dequeueReusableCell(withIdentifier: "saveListCell", for: indexPath) as! SubtitleTVCell
-
-        let cell = tableView.dequeueReusableCell(withIdentifier: "saveListCell", for: indexPath)
-        let task = toDoItems[indexPath.row]
         
-        if Int(task.subname!) == 1 {
-            array = ["Распечатайте ваш маршрут и билеты, копии паспортов", "Решите, как будете добираться до аэропорта, вокзала", "Определите время, когда будет нужно выехать в аэропорт или на вокзал","Деньги и документы. Банковские карты","Список важных телефонов и адресов",
-                "Футболки- шт. Рубашки- шт.(по 1 на 2 дня","Нижнее бельё- шт. Носки- пар(ы) (по 1 на каждый день","Брюки/Шорты","Дополнительная обувь","Медикаменты"]
-            for i in array {
-                cell.textLabel?.text = i
-                print("hhhhhhh")
-            }
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SubtitleTVCell
+        
+        let readyCell = readyList[indexPath.row]
+        for _ in readyList {
+        cell.subtitleText.text = "\(readyCell)"
             
-        } //else {
-           // cell.textLabel?.text = task.subname
-      //  }
-        
-        
+        }
         return cell
+  }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+       /* let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        
+        let fetchRequest: NSFetchRequest<ArrayList> = ArrayList.fetchRequest()
+        
+        do {
+            toDoItems = try context.fetch(fetchRequest)
+        } catch {
+            print(error.localizedDescription)
+        } */
     }
- 
+    
+   /* override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == UITableViewCellEditingStyle.delete
+        {
+            readyList.remove(at: indexPath.row)
+            self.tableView.reloadData()
+            
+           /* if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+                // create entity of our member class in the context
+                let arrayName = ArrayName(context: context)
+                let array = ArrayList(context:context)
+                
+                //arrayName.name = self.toDoName.description
+                array.array = self.readyList as NSObject
+                
+                print(self.readyList)
+                do {
+                    try context.save()
+                    print("Сохранение удалось!")
+                } catch let error as NSError {
+                    print("Не удалось сохранить данные \(error), \(error.userInfo)")
+                }
+            } */
+        }
+    } */
+    
+    
+}
 
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
-}   */

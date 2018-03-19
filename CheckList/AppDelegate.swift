@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge], completionHandler: { granted, error in
             // handle error if there is one
         })
-        
         return true
     }
 

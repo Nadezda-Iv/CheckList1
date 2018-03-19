@@ -6,18 +6,20 @@
 //  Copyright © 2018 dev.ios. All rights reserved.
 //
 
-import Foundation
+/*import Foundation
 
 struct Section {
-    var genre: String!
-    var movies: [String]!
+    var category: String!
+    var position: [String]!
     var expanded: Bool!
     var subtitle: String!
+    var mark: Bool!
 
-    init (genre: String, movies: [String], expanded: Bool, subtitle: String) {
-        self.genre = genre
-        self.movies = movies
+    init (category: String, position: [String], expanded: Bool, subtitle: String, mark: Bool) {
+        self.category = category
+        self.position = position
         self.expanded = expanded
         self.subtitle = subtitle
+        self.mark = mark
     }
-}
+} */
