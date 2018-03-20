@@ -118,7 +118,7 @@ class SaveChekListTVC: UITableViewController, NSFetchedResultsControllerDelegate
         tableView.endUpdates()
     }
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        //let important = importantAction(at: indexPath)
+        // delete
         let delete = deleteAction(at: indexPath)
         return UISwipeActionsConfiguration(actions: [delete])
     }

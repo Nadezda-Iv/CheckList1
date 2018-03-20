@@ -26,9 +26,6 @@
 		523F74452029B8FB00742008 /* ReadyTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F74442029B8FB00742008 /* ReadyTextTableViewCell.swift */; };
 		523F74472029C6C900742008 /* ChooseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 523F74462029C6C900742008 /* ChooseTableViewCell.swift */; };
 		52628254202833B500D1CB4E /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52628253202833B500D1CB4E /* NewListViewController.swift */; };
-		526282562028354E00D1CB4E /* ExpandableHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 526282552028354E00D1CB4E /* ExpandableHeaderView.xib */; };
-		526282582028385300D1CB4E /* ExpandableHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526282572028385300D1CB4E /* ExpandableHeaderView.swift */; };
-		5262825A20283C1900D1CB4E /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262825920283C1900D1CB4E /* Section.swift */; };
 		5262825C20287A8800D1CB4E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262825B20287A8800D1CB4E /* CoreData.swift */; };
 		526912F12019F7D500A64709 /* SaveChekListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526912F02019F7D500A64709 /* SaveChekListTVC.swift */; };
 		52AB1B5D204184C40015ED05 /* ChoiseWithUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */; };
@@ -61,9 +58,6 @@
 		523F74442029B8FB00742008 /* ReadyTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyTextTableViewCell.swift; sourceTree = "<group>"; };
 		523F74462029C6C900742008 /* ChooseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseTableViewCell.swift; sourceTree = "<group>"; };
 		52628253202833B500D1CB4E /* NewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
-		526282552028354E00D1CB4E /* ExpandableHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ExpandableHeaderView.xib; sourceTree = "<group>"; };
-		526282572028385300D1CB4E /* ExpandableHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableHeaderView.swift; sourceTree = "<group>"; };
-		5262825920283C1900D1CB4E /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		5262825B20287A8800D1CB4E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		526912F02019F7D500A64709 /* SaveChekListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChekListTVC.swift; sourceTree = "<group>"; };
 		52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiseWithUserDefaults.swift; sourceTree = "<group>"; };
@@ -139,9 +133,6 @@
 		523F743F2029989400742008 /* NewCheckList */ = {
 			isa = PBXGroup;
 			children = (
-				526282552028354E00D1CB4E /* ExpandableHeaderView.xib */,
-				526282572028385300D1CB4E /* ExpandableHeaderView.swift */,
-				5262825920283C1900D1CB4E /* Section.swift */,
 				52628253202833B500D1CB4E /* NewListViewController.swift */,
 				5223A7FD205AAE5F009C93ED /* NewTableViewCell.swift */,
 			);
@@ -241,7 +232,6 @@
 				522EB4F12018CDB700BF74AB /* LaunchScreen.storyboard in Resources */,
 				522EB4EE2018CDB700BF74AB /* Assets.xcassets in Resources */,
 				522EB4E92018CDB700BF74AB /* Main.storyboard in Resources */,
-				526282562028354E00D1CB4E /* ExpandableHeaderView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,12 +253,10 @@
 				522EB4F92018CE1500BF74AB /* FirstListViewController.swift in Sources */,
 				522852C22036E9DC00C33AE8 /* SaveListTVC.swift in Sources */,
 				522EB4EC2018CDB700BF74AB /* CheckList.xcdatamodeld in Sources */,
-				5262825A20283C1900D1CB4E /* Section.swift in Sources */,
 				523F743E2029982B00742008 /* ReadyListTVC.swift in Sources */,
 				5238B63E2047EE34001F16C3 /* SaveArray.swift in Sources */,
 				523F74472029C6C900742008 /* ChooseTableViewCell.swift in Sources */,
 				522852C62036EAC900C33AE8 /* Subtitle.swift in Sources */,
-				526282582028385300D1CB4E /* ExpandableHeaderView.swift in Sources */,
 				523F74392029968F00742008 /* ChooseList.swift in Sources */,
 				523F74452029B8FB00742008 /* ReadyTextTableViewCell.swift in Sources */,
 				523F743B202996B900742008 /* ReadyList.swift in Sources */,
@@ -415,6 +403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9PL5JEXQU;
 				INFOPLIST_FILE = CheckList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = notcompany.CheckList;
@@ -429,6 +418,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V9PL5JEXQU;
 				INFOPLIST_FILE = CheckList/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = notcompany.CheckList;
