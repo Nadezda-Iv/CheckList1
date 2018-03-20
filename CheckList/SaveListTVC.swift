@@ -13,6 +13,10 @@ class SaveListTVC: UITableViewController {
     
     var readyList = [NSObject]()
   
+    var toDoArray = [ArrayList]()
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,31 +50,31 @@ class SaveListTVC: UITableViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-       /* let appDelegate = UIApplication.shared.delegate as! AppDelegate
+         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         
         let fetchRequest: NSFetchRequest<ArrayList> = ArrayList.fetchRequest()
         
         do {
-            toDoItems = try context.fetch(fetchRequest)
+            toDoArray = try context.fetch(fetchRequest)
         } catch {
             print(error.localizedDescription)
-        } */
+        }
     }
     
-   /* override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
         if editingStyle == UITableViewCellEditingStyle.delete
         {
             readyList.remove(at: indexPath.row)
             self.tableView.reloadData()
             
-           /* if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
+            if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
                 // create entity of our member class in the context
                 let arrayName = ArrayName(context: context)
                 let array = ArrayList(context:context)
-                
-                //arrayName.name = self.toDoName.description
+               
+                //arrayName.name =
                 array.array = self.readyList as NSObject
                 
                 print(self.readyList)
@@ -80,9 +84,9 @@ class SaveListTVC: UITableViewController {
                 } catch let error as NSError {
                     print("Не удалось сохранить данные \(error), \(error.userInfo)")
                 }
-            } */
-        }
-    } */
+            }
+        } 
+    }
     
     
 }

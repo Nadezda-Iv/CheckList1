@@ -41,10 +41,10 @@ class ChooseListTVC: UITableViewController {
                 case 1:  arrayList = ["Распечатайте ваш маршрут и билеты, копии паспортов", "Решите, как будете добираться до аэропорта, вокзала", "Определите время, когда будет нужно выехать в аэропорт или на вокзал", "Деньги и документы. Банковские карты", "Список важных телефонов и адресов", "Футболки- шт. Рубашки- шт.(по 1 на 2 дня)", "Нижнее бельё- шт. Носки- пар(ы) (по 1 на каждый день)", "Брюки/Шорты", "Дополнительная обувь", "Медикаменты"]
                 print("0")
                     
-                case 2:  arrayList = ["Площадь пола", "Площадь стен", "Площадь дверных проемов"]
+                case 2:  arrayList = ["Купальник", "Крем-защита от солнца", "Полотенце на пляж"]
                 print("2")
                     
-                case 3:  arrayList = ["Стоимость работ", "Стоимость материалов", "Время ремонта"]
+                case 3:  arrayList = ["Шапка", "Перчатки", "Ботинки зимние"]
                 print("3")
                 default: break
                 }
@@ -110,14 +110,14 @@ class ChooseListTVC: UITableViewController {
     let listCategory16 = ReadyList(name: "Медикаменты")
     
     // List travel 2
-    let listCategory4 = ReadyList(name: "Площадь пола")
-    let listCategory5 = ReadyList(name: "Площадь стен")
-    let listCategory6 = ReadyList(name: "Площадь дверных проемов")
+    let listCategory4 = ReadyList(name: "Купальник")
+    let listCategory5 = ReadyList(name: "Крем-защита от солнца")
+    let listCategory6 = ReadyList(name: "Полотенце на пляж")
     
     // List travel 3
-    let listCategory7 = ReadyList(name: "Стоимость работ")
-    let listCategory8 = ReadyList(name: "Стоимость материалов")
-    let listCategory9 = ReadyList(name: "Время ремонта")
+    let listCategory7 = ReadyList(name: "Шапка")
+    let listCategory8 = ReadyList(name: "Перчатки")
+    let listCategory9 = ReadyList(name: "Ботинки зимние")
     
   
 
