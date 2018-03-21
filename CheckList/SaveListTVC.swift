@@ -71,7 +71,7 @@ class SaveListTVC: UITableViewController {
             
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
                 // create entity of our member class in the context
-                let arrayName = ArrayName(context: context)
+                //let arrayName = ArrayName(context: context)
                 let array = ArrayList(context:context)
                
                 //arrayName.name =

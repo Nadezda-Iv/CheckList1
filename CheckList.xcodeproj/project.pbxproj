@@ -28,6 +28,9 @@
 		52628254202833B500D1CB4E /* NewListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52628253202833B500D1CB4E /* NewListViewController.swift */; };
 		5262825C20287A8800D1CB4E /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5262825B20287A8800D1CB4E /* CoreData.swift */; };
 		526912F12019F7D500A64709 /* SaveChekListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 526912F02019F7D500A64709 /* SaveChekListTVC.swift */; };
+		527A61D9206167D9008C2E60 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A61D8206167D9008C2E60 /* MapViewController.swift */; };
+		527A61DB206175F7008C2E60 /* CityCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A61DA206175F7008C2E60 /* CityCollectionViewController.swift */; };
+		527A61DD20617804008C2E60 /* CityCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 527A61DC20617804008C2E60 /* CityCollectionViewCell.swift */; };
 		52AB1B5D204184C40015ED05 /* ChoiseWithUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */; };
 		52BCAB9F20230D37003AEE59 /* ChooseListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCAB9E20230D37003AEE59 /* ChooseListTVC.swift */; };
 		52BCABA120232823003AEE59 /* MemberTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BCABA020232823003AEE59 /* MemberTVC.swift */; };
@@ -60,6 +63,9 @@
 		52628253202833B500D1CB4E /* NewListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewListViewController.swift; sourceTree = "<group>"; };
 		5262825B20287A8800D1CB4E /* CoreData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		526912F02019F7D500A64709 /* SaveChekListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveChekListTVC.swift; sourceTree = "<group>"; };
+		527A61D8206167D9008C2E60 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		527A61DA206175F7008C2E60 /* CityCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionViewController.swift; sourceTree = "<group>"; };
+		527A61DC20617804008C2E60 /* CityCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityCollectionViewCell.swift; sourceTree = "<group>"; };
 		52AB1B5C204184C40015ED05 /* ChoiseWithUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiseWithUserDefaults.swift; sourceTree = "<group>"; };
 		52BCAB9E20230D37003AEE59 /* ChooseListTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseListTVC.swift; sourceTree = "<group>"; };
 		52BCABA020232823003AEE59 /* MemberTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTVC.swift; sourceTree = "<group>"; };
@@ -102,6 +108,7 @@
 				522EB4E32018CDB700BF74AB /* AppDelegate.swift */,
 				5262825B20287A8800D1CB4E /* CoreData.swift */,
 				522EB4E72018CDB700BF74AB /* Main.storyboard */,
+				527A61D7206167A6008C2E60 /* Map */,
 				52C52351203331CE00CE196E /* WeatherList */,
 				523F743F2029989400742008 /* NewCheckList */,
 				523F7440202998AF00742008 /* AddMember */,
@@ -159,6 +166,16 @@
 				522852C92036EDB000C33AE8 /* SubtitleTVCell.swift */,
 			);
 			name = SaveList;
+			sourceTree = "<group>";
+		};
+		527A61D7206167A6008C2E60 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				527A61D8206167D9008C2E60 /* MapViewController.swift */,
+				527A61DA206175F7008C2E60 /* CityCollectionViewController.swift */,
+				527A61DC20617804008C2E60 /* CityCollectionViewCell.swift */,
+			);
+			name = Map;
 			sourceTree = "<group>";
 		};
 		52C52351203331CE00CE196E /* WeatherList */ = {
@@ -250,12 +267,14 @@
 				52EE186D20334E7100B6FB79 /* Weather.swift in Sources */,
 				522852CA2036EDB000C33AE8 /* SubtitleTVCell.swift in Sources */,
 				522852C82036ED5A00C33AE8 /* HeaderTVCell.swift in Sources */,
+				527A61D9206167D9008C2E60 /* MapViewController.swift in Sources */,
 				522EB4F92018CE1500BF74AB /* FirstListViewController.swift in Sources */,
 				522852C22036E9DC00C33AE8 /* SaveListTVC.swift in Sources */,
 				522EB4EC2018CDB700BF74AB /* CheckList.xcdatamodeld in Sources */,
 				523F743E2029982B00742008 /* ReadyListTVC.swift in Sources */,
 				5238B63E2047EE34001F16C3 /* SaveArray.swift in Sources */,
 				523F74472029C6C900742008 /* ChooseTableViewCell.swift in Sources */,
+				527A61DB206175F7008C2E60 /* CityCollectionViewController.swift in Sources */,
 				522852C62036EAC900C33AE8 /* Subtitle.swift in Sources */,
 				523F74392029968F00742008 /* ChooseList.swift in Sources */,
 				523F74452029B8FB00742008 /* ReadyTextTableViewCell.swift in Sources */,
@@ -265,6 +284,7 @@
 				52C523502033315E00CE196E /* WeatherTableViewController.swift in Sources */,
 				52AB1B5D204184C40015ED05 /* ChoiseWithUserDefaults.swift in Sources */,
 				52BCABA120232823003AEE59 /* MemberTVC.swift in Sources */,
+				527A61DD20617804008C2E60 /* CityCollectionViewCell.swift in Sources */,
 				526912F12019F7D500A64709 /* SaveChekListTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
