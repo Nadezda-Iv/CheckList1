@@ -9,85 +9,91 @@
 import UIKit
 import CoreData
 
-class SaveListTVC: UITableViewController {
+class SaveListTVC: UITableViewController, NSFetchedResultsControllerDelegate  {
     
-    var readyList = [NSObject]()
+    var textField: UITextField!
+    var readyList: NSOrderedSet?
+    var listItem: [CheckListItem]?
+ 
+    
+    var fetchResultController: NSFetchedResultsController<CheckListItem>!
   
-    var toDoArray = [ArrayList]()
-    
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-  
-    }
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        
+        setupContentsView()
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return readyList.count
+       
+        return (listItem!.count)
     }
     
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+    private func setupContentsView() {
+        listItem = readyList?.array as? [CheckListItem]
     }
-    
+
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SubtitleTVCell
         
-        let readyCell = readyList[indexPath.row]
-        for _ in readyList {
-        cell.subtitleText.text = "\(readyCell)"
-            
+        //let listItem = readyList
+    
+        let readyCell = listItem![indexPath.row]
+        for _ in listItem! {
+           cell.subtitleText.text = "\(readyCell)"
         }
         return cell
   }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-         let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        
-        let fetchRequest: NSFetchRequest<ArrayList> = ArrayList.fetchRequest()
-        
-        do {
-            toDoArray = try context.fetch(fetchRequest)
-        } catch {
-            print(error.localizedDescription)
-        }
-    }
-    
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
+ /*   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath)
     {
-        if editingStyle == UITableViewCellEditingStyle.delete
-        {
-            readyList.remove(at: indexPath.row)
-            self.tableView.reloadData()
-            
-            if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
-                // create entity of our member class in the context
-                //let arrayName = ArrayName(context: context)
-                let array = ArrayList(context:context)
-               
-                //arrayName.name =
-                array.array = self.readyList as NSObject
-                
-                print(self.readyList)
-                do {
-                    try context.save()
-                    print("Сохранение удалось!")
-                } catch let error as NSError {
-                    print("Не удалось сохранить данные \(error), \(error.userInfo)")
-                }
+        let context = (UIApplication.shared.delegate as! AppDelegate).coreDataStack.persistentContainer.viewContext
+        if editingStyle == .delete {
+            arrayItem = readyList![indexPath.row] as! CheckListItem
+            print(arrayItem)
+            context.delete(arrayItem as NSManagedObject)
+            do {
+                try context.save()
+            } catch {
+                print(error.localizedDescription)
             }
-        } 
+            do {
+                readyList = try context.fetch(CheckListItem.fetchRequest()) as! NSOrderedSet
+                
+            } catch {
+                print("Fetching Failed")
+            }
+            tableView.reloadData()
+        }
+    }  */
+    
+    func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.beginUpdates()
     }
     
+    
+    func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>, didChange anObject: Any, at indexPath: IndexPath?, for type: NSFetchedResultsChangeType, newIndexPath: IndexPath?) {
+        
+        switch type {
+        case .insert: guard let indexPath = newIndexPath else { break }
+        tableView.insertRows(at: [indexPath], with: .fade)
+        case .delete: guard let indexPath = indexPath else { break }
+        tableView.deleteRows(at: [indexPath], with: .fade)
+        case .update: guard let indexPath = indexPath else { break }
+        tableView.reloadRows(at: [indexPath], with: .fade)
+        default:
+            tableView.reloadData()
+        }
+        
+    }
+    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.endUpdates()
+        
+    }
     
 }
 

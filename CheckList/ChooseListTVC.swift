@@ -7,13 +7,12 @@
 //
 
 import UIKit
-//import CoreData
+import CoreData
 
 class ChooseListTVC: UITableViewController {
 
-  // var toDoItems: [NewCategory] = []
 
-    //var indexPath: IndexPath!
+    var chooseList = [ChooseList]()
 
     var choiseList = [Bool](repeatElement(false, count: 5))
     
@@ -50,13 +49,13 @@ class ChooseListTVC: UITableViewController {
                 }
                 if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
                     // create entity of our member class in the context
-                    let arrayName = ArrayName(context: context)
-                    let array = ArrayList(context:context)
+                    let arrayName = CheckList(context: context)
+                    let array = CheckListItem(context:context)
                     
                     // set all the properties
                     arrayName.name = self.textField.text
                     array.array = arrayList as NSObject
-                    array.name = self.textField.text
+                    //array.name = self.textField.text
 
                     do {
                         try context.save()
@@ -73,17 +72,8 @@ class ChooseListTVC: UITableViewController {
         ac.addAction(cancel)
        present(ac, animated: true, completion: nil)
    }
-    
-    func save(name: String) -> [String] {
-        self.addText.append(name)
-        return self.addText
-    }
+ 
 
-
-    var chooseList = [ChooseList]()
-    
-    var previousIndexPath: IndexPath?
-    var currentIndexPath: IndexPath!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -153,7 +143,7 @@ class ChooseListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChooseTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ChooseTVCell
         let list = chooseList[indexPath.row]
         cell.chooseLabel.text = list.name
         

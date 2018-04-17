@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReadyTextTableViewCell: UITableViewCell {
+class ReadyTextTVCell: UITableViewCell {
 
     @IBOutlet weak var cellText: UILabel!
     override func awakeFromNib() {

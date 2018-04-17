@@ -40,7 +40,7 @@ class ReadyListTVC: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReadyTextTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ReadyTextTVCell
         
         let readyCell = readyList[indexPath.row]
         for _ in readyList {

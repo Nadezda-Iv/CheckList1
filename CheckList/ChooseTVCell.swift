@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChooseTableViewCell: UITableViewCell {
+class ChooseTVCell: UITableViewCell {
 
     @IBOutlet weak var chooseLabel: UILabel!
   

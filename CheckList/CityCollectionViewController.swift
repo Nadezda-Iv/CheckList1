@@ -12,9 +12,12 @@ private let reuseIdentifier = "Cell"
 
 class CityCollectionViewController: UICollectionViewController {
 
+    var cityOne = City(name: "Moscow", location: [(55.7601, 37.6187), (55.4535, 37.3736)])
+    var cityTwo = City(name:"Saint-Petersburg", location:[(59.9398, 30.3145), (59.9389, 30.3150), (59.9375, 30.3087), (59.9317, 30.3361), (59.9256, 30.2959), (59.9414, 30.3045), (59.9385, 30.3322)])
+    var cityThree = City(name:"Minsk", location: [(53.903654, 27.556065), (53.8954, 27.5478), (53.9085, 27.5748), (53.8961, 27.5449), (53.9031, 27.5605), (53.8918, 27.5515)])
     
     let mainMenu = ["disneyland-paris", "montmartre", "pantheon"]
-    
+   
     override func viewDidLoad() {
         
         collectionView?.delegate = self
@@ -25,7 +28,8 @@ class CityCollectionViewController: UICollectionViewController {
     }
     
     public override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return mainMenu.count
+        let section = [cityOne, cityTwo, cityThree]
+        return section.count
     }
     public override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
@@ -40,6 +44,21 @@ class CityCollectionViewController: UICollectionViewController {
         return cell
         
     }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "City" {
+            let chosenPerson = segue.destination as? MapViewController
+            
+            if let indexPaths = self.collectionView?.indexPathsForSelectedItems {
+                let indexPath = indexPaths.first
+                 let usersArray = [self.cityOne, self.cityTwo, self.cityThree]
+                chosenPerson?.location = usersArray[indexPath!.row].location
+                chosenPerson?.nameCity = usersArray[indexPath!.row].name
+                
+            }
+        }
+    }
+    
 
     // MARK: UICollectionViewDelegate
 

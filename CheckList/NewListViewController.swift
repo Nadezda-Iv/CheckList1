@@ -9,12 +9,12 @@
 import UIKit
 import CoreData
 
-class NewListViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource { //}, ExpandableHeaderViewDelegate {
+class NewListViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
     
     let sectionsHeaders = ["Most important", "Gadget", "Beautician on board", "Cosmetic bag in the suitcare", "Medicine chest", "Clothes"]
     let sectionsContent = [["passport", "tickets","reservation", "insurance", "money", "phone", "charger", "headphone", "powerbank", "driver's license"], ["camera", "flash card", "battery additional", "e-book", "adapter to the outlet", "laptop"], ["wet napkin", "disposable wipes", "moisture cream", "eye drops", "hand sanitizer", "lip balm"], ["shampoo", "hair conditioner", "comb", "razor", "shaving gel", "facial toner", "deodorant", "manicure set", "tweezers", "cotton swab", "cotton pad", "perfume", "hygience products", "lenses", "elastic hair band", "hairdryer", "towel", "sun cream"], ["anesthetic", "antipyretic", "for cold", "from allergies", "antibiotic", "from injury", "motion sickness", "as poisoning", "from diarrhoea", "patch", "antiseptic"], ["socks and underwear", "jerseys", "shirts", "dresses/skirts", "jeans/pants", "sweater", "windbreaker", "jewelry and accessories", "sleepwear", "belt"]]
     
-    var toDoItems: [ArrayName] = []
+    var toDoItems: [CheckList] = []
     
     var arrayCell = [String]()
     
@@ -31,7 +31,7 @@ class NewListViewController: UIViewController,  UITableViewDelegate, UITableView
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+
     }
     
     // MARK: - Table view data source
@@ -87,12 +87,12 @@ class NewListViewController: UIViewController,  UITableViewDelegate, UITableView
         
             if let context = (UIApplication.shared.delegate as? AppDelegate)?.coreDataStack.persistentContainer.viewContext {
                 // create entity of our member class in the context
-                let arrayName = ArrayName(context: context)
-                let array = ArrayList(context:context)
+                let arrayName = CheckList(context: context)
+                let array = CheckListItem(context:context)
                 
                 arrayName.name = textField?.text
                 array.array = self.arrayCell as NSObject
-                array.name = textField?.text
+                //array.name = textField?.text
                 print(self.arrayCell)
                 do {
                     try context.save()

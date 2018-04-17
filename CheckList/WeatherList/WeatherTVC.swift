@@ -10,7 +10,7 @@
 import UIKit
 import CoreLocation
 
-class WeatherTableViewController: UITableViewController, UISearchBarDelegate {
+class WeatherTVC: UITableViewController, UISearchBarDelegate {
     
     
     @IBOutlet var searchBar: UISearchBar!
