@@ -24,21 +24,23 @@ class SaveListTVC: UITableViewController, NSFetchedResultsControllerDelegate  {
         setupContentsView()
     }
     
+    private func setupContentsView() {
+        listItem = readyList?.array as? [CheckListItem]
+      
+    }
+
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
        
         return (listItem!.count)
     }
     
-    private func setupContentsView() {
-        listItem = readyList?.array as? [CheckListItem]
-    }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SubtitleTVCell
         
-        //let listItem = readyList
     
         let readyCell = listItem![indexPath.row]
         for _ in listItem! {
